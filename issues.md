@@ -8,7 +8,6 @@
 | Long line >120 chars | flake8 | 102 | Style issue | Broke into two lines | ✅ Fixed |
 
 # Static Code Analysis – Final Fix Summary
-# Static Code Analysis – Final Fix Summary
 
 | Issue | Tool | Description | Before Fix | After Fix | Status |
 |-------|------|--------------|-------------|------------|--------|
