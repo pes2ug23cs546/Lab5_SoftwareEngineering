@@ -8,15 +8,19 @@
 | Long line >120 chars | flake8 | 102 | Style issue | Broke into two lines | ✅ Fixed |
 
 # Static Code Analysis – Final Fix Summary
+# Static Code Analysis – Final Fix Summary
 
 | Issue | Tool | Description | Before Fix | After Fix | Status |
 |-------|------|--------------|-------------|------------|--------|
-| Missing docstrings | pylint | No docstrings for module/functions | 12 warnings | 0 warnings | ✅ Fixed |
-| Function naming | pylint | CamelCase names used | 7 occurrences | 0 occurrences | ✅ Fixed |
-| Mutable default list | pylint | Used [] as default param | Present | Replaced with None default | ✅ Fixed |
-| Bare except | pylint | Caught all exceptions | Present | Specific exceptions used | ✅ Fixed |
-| Unsafe eval | bandit | Use of eval() | Present | Replaced with `ast.literal_eval()` | ✅ Fixed |
-| File handling | pylint | open() without encoding/context | Present | Added `with open(..., encoding='utf-8')` | ✅ Fixed |
-| Unused import | pylint | logging not used | Present | Removed | ✅ Fixed |
-| String formatting | pylint | Used `%` instead of f-string | Present | Replaced with f-string | ✅ Fixed |
+| Missing module/function docstrings | pylint | No docstrings for module or functions | Multiple missing | Added descriptive docstrings | ✅ Fixed |
+| Function naming style | pylint | Used CamelCase instead of snake_case | 7 occurrences | Renamed all to snake_case | ✅ Fixed |
+| Mutable default argument | pylint | Default `[]` used in function param | Present | Replaced with `None` + init inside | ✅ Fixed |
+| Bare except clause | pylint | Generic `except:` block | Present | Replaced with `except (ValueError, KeyError)` | ✅ Fixed |
+| File handling | pylint | `open()` without context or encoding | Present | Used `with open(..., encoding="utf-8")` | ✅ Fixed |
+| Global statement | pylint | Used unnecessary `global` | Present | Simplified usage, documented necessity | ✅ Fixed |
+| Unsafe eval usage | bandit | `eval()` found in code | Present | Replaced with `ast.literal_eval()` | ✅ Fixed |
+| String formatting | pylint | Used old `%` formatting | Present | Converted to f-strings | ✅ Fixed |
+| Unused import | pylint | `logging` imported but unused | Present | Removed unused import | ✅ Fixed |
+| Missing input validation | pylint | No validation on user input | Missing | Added try/except and type checks | ✅ Fixed |
+| **Overall pylint score** | pylint | Code quality rating | **4.80 / 10** | **9.89 / 10** | ✅ Improved |
 

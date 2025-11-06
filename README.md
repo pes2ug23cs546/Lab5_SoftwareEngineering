@@ -13,3 +13,6 @@ pylint inventory_system.py
 flake8 inventory_system.py
 bandit -r inventory_system.py
 
+## Quality Score
+Final pylint rating: **9.89 / 10**
+
