@@ -1,11 +1,5 @@
-"""
-Inventory Management System
-Provides functionality to add, remove, load, save, and display inventory items.
-"""
+import ast  
 
-import ast  # for safe evaluation of input data
-
-# Global inventory dictionary
 inventory = {}
 
 
@@ -36,21 +30,21 @@ def get_qty(name):
 
 
 def load_data(filename="inventory.txt"):
-    """Load inventory data from a file."""
-    global inventory
+    """Load inventory data from a file and return it as a dictionary."""
     try:
         with open(filename, "r", encoding="utf-8") as file:
             file_content = file.read().strip()
             if file_content:
-                inventory = ast.literal_eval(file_content)
-            else:
-                inventory = {}
-        print(f"📦 Loaded inventory data from {filename}.")
+                return ast.literal_eval(file_content)
+            return {}
     except FileNotFoundError:
         print(f"⚠️ File '{filename}' not found. Starting with empty inventory.")
-        inventory = {}
+        return {}
     except (SyntaxError, ValueError) as err:
-        print(f"⚠️ Could not load data from {filename}: {err}")
+        print(
+            f"⚠️ Could not load data from {filename}: {err}"
+        )
+        return {}
 
 
 def save_data(filename="inventory.txt"):
@@ -85,7 +79,8 @@ def check_low_items(threshold=5):
 
 def main():
     """Run a simple menu-driven inventory system."""
-    load_data()
+    global inventory  # local inventory variable
+    inventory = load_data()
 
     while True:
         print("\nSelect an option:")
